@@ -24,6 +24,13 @@ Route::get('/test', function () {
     return view('layouts.userHasNotLogin');
 });
 
+Route::get('/storage-link', function(){
+    $targetFolder = storage_path('app/public');
+    $linkFolder = public_path('storage');
+    symlink($targetFolder, $linkFolder);
+});
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

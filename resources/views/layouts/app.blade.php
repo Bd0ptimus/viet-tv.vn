@@ -9,6 +9,7 @@
 
     <!-- HTML Meta Tags -->
     <title>IPTV Online by Viet-TV</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/web-info/logo/logo.jpg')}}" />
     <meta name="description"
         content="Xem truyền hình Online by Viet-TV | Truyền hình dành riêng cho người Việt tại nước ngoài | Chi tiết liên hệ Zalo: +84983775500">
     <!-- Google / Search Engine Tags -->
