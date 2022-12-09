@@ -33,7 +33,7 @@
                         </div>
 
                         <div class="row d-flex justify-content-around">
-                            <a class="redirect-btn vertical-container" href="{{route('auth.login')}}">
+                            <a class="redirect-btn vertical-container" href="{{route('home')}}">
                                 <i class="fa-solid fa-right-to-bracket ">   </i><span >    Đi đến đăng nhập</span>
                             </a>
                             <a class="redirect-btn" href="https://zalo.me/84983775500">

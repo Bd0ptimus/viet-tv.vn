@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 require_once 'auth.php';
 require_once 'admin.php';
+require_once 'tv.php';
+
 
 
 // Route::get('/', function () {
@@ -21,7 +23,7 @@ require_once 'admin.php';
 // });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/test', function () {
-    return view('layouts.userHasNotLogin');
+    return view('auth.login1');
 });
 
 Route::get('/storage-link', function(){
@@ -29,6 +31,8 @@ Route::get('/storage-link', function(){
     $linkFolder = public_path('storage');
     symlink($targetFolder, $linkFolder);
 });
+
+
 
 
 Auth::routes();
