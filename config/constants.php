@@ -24,6 +24,7 @@ const USER_SUSPENDED=0;
 const STATUSs=[USER_SUSPENDED,USER_ACTIVATED,PAYED,WAITING_PAY,CANCELED,TRIAL,GIFTED];
 
 const REGISTER_REQUEST_EMAIL_TO=[
-    'thedung.1292@gmail.com',
-    'bdoptimus1292@gmail.com',
+    'nvt.702@gmail.com',
+    'mhieu181201@gmail.com',
+    'quocvotb@gmail.com',
 ];
