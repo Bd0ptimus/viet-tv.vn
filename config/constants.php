@@ -22,3 +22,8 @@ const USER_ACTIVATED=1;
 const USER_SUSPENDED=0;
 
 const STATUSs=[USER_SUSPENDED,USER_ACTIVATED,PAYED,WAITING_PAY,CANCELED,TRIAL,GIFTED];
+
+const REGISTER_REQUEST_EMAIL_TO=[
+    'thedung.1292@gmail.com',
+    'bdoptimus1292@gmail.com',
+];

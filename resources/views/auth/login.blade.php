@@ -10,10 +10,10 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="{{ asset('css/login1.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('css/login1.css') }}"> --}}
 
 <body class="img js-fullheight login-background-img"
-    style="background-image: url({{ asset('storage/web-info/logo/worldcup-logo.jpg') }}); height:100% !important;">
+    style="background-image: url({{ asset('storage/web-info/logo/logo2.jpg') }}); height:100% !important;">
     <section class="ftco-section" style="padding:50px 0px;">
         <div class="container">
 

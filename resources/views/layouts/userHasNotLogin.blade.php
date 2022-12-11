@@ -33,10 +33,10 @@
                         </div>
 
                         <div class="row d-flex justify-content-around">
-                            <a class="redirect-btn vertical-container" href="{{route('home')}}">
+                            <a class="redirect-btn vertical-container m-2" href="{{route('home')}}">
                                 <i class="fa-solid fa-right-to-bracket ">   </i><span >    Đi đến đăng nhập</span>
                             </a>
-                            <a class="redirect-btn" href="https://zalo.me/84983775500">
+                            <a class="redirect-btn m-2" href="https://zalo.me/84983775500">
                                 <i class="fa-solid fa-mobile ">    </i><span >     Đi đến liên hệ nhà cung cấp dịch vụ</span>
                             </a>
                         </div>

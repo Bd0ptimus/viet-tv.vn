@@ -8,7 +8,13 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegisterRequestMail;
 
+
+
+use App\Models\RegisterRequest;
 class RegisterController extends Controller
 {
     /*
@@ -69,5 +75,77 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    private function registerValidate($request){
+        $messages = [
+            'name.required' => 'Tên bắt buộc phaỉ được nhập.',
+            'address.required' => 'Địa chỉ bắt buộc phaỉ được nhập.',
+            'phone.required' => 'Điện thoại bắt buộc phaỉ được nhập.',
+        ];
+
+        $validator = Validator::make($request, [
+            'name'    => 'required',
+            'address'    => 'required',
+            'phone' => 'required',
+
+        ], $messages);
+
+        return $validator;
+    }
+
+    public function index(Request $request){
+        if($request->isMethod('POST')){
+            $validator = $this->registerValidate($request->all());
+            if($validator->fails()){
+                return redirect()->back()->withErrors($validator)->withInput($request->all());
+            }else{
+                if($request->country == '0'){
+                    $validator->errors()->add('country', 'Phải chọn quốc gia');
+                    return redirect()->back()->withErrors($validator)->withInput($request->all());
+                }
+                if(!str_contains($request->phoneNumber, '+')){
+                    // dd($request->phoneNumber);
+                    $validator->errors()->add('phone', 'Định dạng số điện thoại không đúng');
+                    return redirect()->back()->withErrors($validator)->withInput($request->all());
+                }
+                $data=[
+                    $request->tv,
+                    $request->netfix,
+                    $request->ytpremium,
+                    $request->vpn,
+                ];
+                // dd($data);
+                $newRequest = RegisterRequest::create([
+                    'name' => $request->name,
+                    'country' => $request->country,
+                    'email'=>$request->email,
+                    'phone'=>$request->phoneNumber,
+                    'address'=>$request->address,
+                    'tv'=>$request->tv=="on"?1:0,
+                    'netflix'=>$request->tv=="on"?1:0,
+                    'youtube_premium'=>$request->ytpremium=="on"?1:0,
+                    'vpn'=>$request->vpn=="on"?1:0,
+                ]);
+                foreach(REGISTER_REQUEST_EMAIL_TO as $recipientEmail){
+                    Mail::to($recipientEmail)->send(new RegisterRequestMail(
+                        $newRequest->name,
+                        $newRequest->address,
+                        $newRequest->country,
+                        $newRequest->phone,
+                        $newRequest->email,
+                        $newRequest->tv == 1? 'Có' : 'Không',
+                        $newRequest->netflix == 1? 'Có' : 'Không',
+                        $newRequest->youtube_premium == 1? 'Có' : 'Không',
+                        $newRequest->vpn == 1? 'Có' : 'Không',
+                        route('admin.accountManager'),
+                    ));
+                }
+                return view('layouts.registerRequestConfirm');
+
+            }
+
+        }
+        return view('auth.userRegister');
     }
 }

@@ -21,14 +21,14 @@
 
 <body>
     <marquee direction="left" style="background:#840123">
-        <h4 style="color: white;background-color:#840123;margin-top: 15px;margin-bottom: 5px">
+        <h4 style="color: white;margin-top: 15px;margin-bottom: 5px">
             Xem truyền hình Online by Viet-TV | Truyền hình dành riêng cho người Việt tại nước ngoài | Chi tiết liên hệ
             Zalo: +84983775500
         </h4>
     </marquee>
     <script src="{{ asset('js/player.js') }}" type="text/javascript"></script>
     <main style="padding-bottom:500px;">
-        <div id="channels">
+        <div id="channels" style="z-index:2;">
 
             <h2 class="category">WORLD CUP 2022</h2>
             <div class="channel_collapse">
@@ -1638,11 +1638,11 @@
         document.oncontextmenu = new Function("return false")
         //]]>
     </script>
-    <div class="footer">
+    {{-- <div class="footer">
         <h3 style="text-align:center;color:white;background-color:#840123;margin-top:5px; font-size : 15px;">
             Hỗ trợ kỹ thuật: +84983775500 (Zalo)
         </h3>
-    </div>
+    </div> --}}
 </body>
 
 

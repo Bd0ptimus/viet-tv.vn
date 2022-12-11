@@ -17,8 +17,10 @@ Route::group(['prefix' => 'auth', 'as'=>'auth.'], function($route){
     $route->any('/login', [ LoginController::class, 'index'])->name('login');
     $route->get('/logout', [ LoginController::class, 'logout'])->name('logout');
     $route->post('/check-device-allow', [ HomeController::class, 'checkDeviceAllow'])->name('checkDeviceAllow');
-
     $route->any('/register', [ RegisterController::class, 'index'])->name('register');
+    $route->get('/extend-use',function () { return view('layouts.extendUse');})->name('extendUse');
+    $route->get('/register-extend-use',function () { return view('layouts.registerAndExtendUse');})->name('registerExtendUse');
+
     $route->get('/cannot-watch', [ HomeController::class, 'notAllowWatch'])->name('cannotWatch');
     $route->group(['prefix' => 'password', 'as'=>'password.'], function($route){
         $route->any('/change', [ ResetPasswordController::class, 'index'])->name('change');

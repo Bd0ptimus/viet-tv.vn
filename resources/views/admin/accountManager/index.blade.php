@@ -17,7 +17,7 @@
 </style>
 
 <body>
-    <div class="row d-flex justify-content-center" style="width:auto; margin:auto; padding:auto;">
+    <div class="row d-flex justify-content-center" style="width:auto; margin:auto; padding:auto; z-index:500;">
         <div class="row d-block justify-content-center" style="width:auto; margin:auto; padding:auto;">
             <div class="row d-flex justify-content-center" style="margin : 30px auto; padding:0px;">
                 <h3 class="d-flex justify-content-center" style="padding:0px;">

@@ -23,7 +23,7 @@ require_once 'tv.php';
 // });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/test', function () {
-    return view('auth.login1');
+    return view('layouts.registerAndExtendUse');
 });
 
 Route::get('/storage-link', function(){

@@ -7,7 +7,7 @@
     use App\Admin;
 @endphp
 <body>
-    <div class="container" style="margin-top:50px;">
+    <div class="container" style="margin-top:50px; background-color:white;" >
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">

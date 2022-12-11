@@ -2696,7 +2696,8 @@ input[type="button"].btn-block {
   .dropdown-item:hover, .dropdown-item:focus {
     color: #16181b;
     text-decoration: none;
-    background-color: #f8f9fa; }
+    /* background-color: #f8f9fa;  */
+  }
   .dropdown-item.active, .dropdown-item:active {
     color: #fff;
     text-decoration: none;
@@ -8193,7 +8194,7 @@ h1, h2, h3, h4, h5,
 
 .login-wrap {
   position: relative;
-  color: rgba(255, 255, 255, 0.9); }
+  color: black; }
   .login-wrap h3 {
     font-weight: 300;
     color: #fff; }

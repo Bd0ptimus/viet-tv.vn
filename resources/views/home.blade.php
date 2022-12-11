@@ -10,12 +10,12 @@
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="{{ asset('css/login1.css') }}">
+<link rel="stylesheet" href="{{ asset('css/login1.css?v=').time() }}">
 
-<body class="img js-fullheight login-background-img"
-    style="background-image: url({{ asset('storage/web-info/logo/worldcup-logo.jpg') }}); height:100% !important;">
-    <section class="ftco-section" style="padding:50px 0px; height : 100%;">
-        <div class="container" style="height:100%;">
+<body class="login-background-img"
+    style=" height:auto;">
+    <section class="ftco-section" style="padding:50px 0px; height : auto; ">
+        <div class="container" style="height:auto;">
 
             @if(Admin::user() == null)
                 <div class="row justify-content-center">
@@ -53,19 +53,21 @@
                                     <button type="submit" class="form-control btn btn-primary submit px-3">Đăng
                                         Nhập</button>
                                 </div>
-                                <div class="form-group d-md-flex">
-                                    <div class="w-50">
+                                <div class="form-group d-flex justify-content-between">
+                                    <div style="width:50%;margin:0px;">
                                         <label class="checkbox-wrap checkbox-primary">Ghi nhớ đăng nhập
                                             <input type="checkbox"  name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
-                                    <div class="w-50 text-md-right">
-                                        <a href="{{ route('auth.password.forget.index') }}" style="color: #fff">Quên Mật Khẩu</a>
+                                    <div class="text-md-right d-flex justify-content-end" style="width:50%;margin:0px;">
+                                        <a href="{{ route('auth.password.forget.index') }}" style="color: #fff">Quên mật khẩu</a>
                                     </div>
                                 </div>
+                                <div class="form-group d-flex justify-content-center">
+                                    <a href="{{ route('auth.register') }}" style="color: #fbceb5">Bạn chưa có tài khoản ?</a>
+                                </div>
                             </form>
-
 
                         </div>
                     </div>
@@ -76,37 +78,69 @@
                 <a class="login-action-nav d-block justify-content-center rounded m-2"
                     style="border:0px !important;" href='{{route('tv.index')}}'>
                     <img class="login-action-img" src="{{asset('storage/web-info/logo/tv-logo.png')}}">
-                    <div class="login-action-text">TRUYỀN HÌNH</div>
+                    <div class="login-action-text-sec vertical-container">
+                        <p class="login-action-text vertical-element-middle-align">
+                            TRUYỀN HÌNH
+                        </p>
+
+                    </div>
                 </a>
                 <a class="login-action-nav d-block justify-content-center rounded m-2"
                     style="border:0px !important;">
                     <img class="login-action-img" src="{{asset('storage/web-info/logo/netflix-logo.png')}}">
-                    <div class="login-action-text">NETFLIX</div>
+                    <div class="login-action-text-sec vertical-container">
+                        <p class="login-action-text vertical-element-middle-align">
+                            NETFLIX
+                        </p>
+
+                    </div>
                 </a>
                 <a class="login-action-nav d-block justify-content-center rounded m-2"
                     style="border:0px !important;">
                     <img class="login-action-img" src="{{asset('storage/web-info/logo/youtubepremium-logo.png')}}">
-                    <div class="login-action-text">YOUTUBE PREMIUM</div>
+                    <div class="login-action-text-sec vertical-container">
+                        <p class="login-action-text vertical-element-middle-align">
+                            YOUTUBE PREMIUM
+                        </p>
+                    </div>
                 </a>
                 <a class="login-action-nav d-block justify-content-center rounded m-2"
                     style="border:0px !important;">
                     <img class="login-action-img" src="{{asset('storage/web-info/logo/vpn-logo.png')}}">
-                    <div class="login-action-text">VPN</div>
+                    <div class="login-action-text-sec vertical-container">
+                        <p class="login-action-text vertical-element-middle-align">
+                            VPN
+                        </p>
+                    </div>
                 </a>
                 <a class="login-action-nav d-block justify-content-center rounded m-2"
-                    style="border:0px !important;">
+                    style="border:0px !important;" href="https://www.facebook.com/viettv1922/">
                     <img class="login-action-img" src="{{asset('storage/web-info/logo/fanpage-logo.jpg')}}">
-                    <div class="login-action-text">FANPAGE</div>
+                    <div class="login-action-text-sec vertical-container">
+
+                        <p class="login-action-text vertical-element-middle-align">
+                            FANPAGE
+                        </p>
+                    </div>
                 </a>
                 <a class="login-action-nav d-block justify-content-center rounded m-2"
-                    style="border:0px !important;">
+                    style="border:0px !important;" href="https://m.me/viettv1922">
                     <img class="login-action-img" src="{{asset('storage/web-info/logo/support-logo.jpg')}}">
-                    <div class="login-action-text">HỖ TRỢ KỸ THUẬT</div>
+                    <div class="login-action-text-sec vertical-container">
+                        <p class="login-action-text vertical-element-middle-align">
+                            HỖ TRỢ KỸ THUẬT
+                        </p>
+                    </div>
                 </a>
                 <a class="login-action-nav d-block justify-content-center rounded m-2"
-                    style="border:0px !important;">
+                    style="border:0px !important;" href="{{route('auth.registerExtendUse')}}">
                     <img class="login-action-img" src="{{asset('storage/web-info/logo/register-logo.png')}}">
-                    <div class="login-action-text">ĐĂNG KÝ/GIA HẠN</div>
+                    <div class="login-action-text-sec vertical-container">
+                        <p class="login-action-text vertical-element-middle-align">
+                            ĐĂNG KÝ/GIA HẠN
+                        </p>
+
+                    </div>
                 </a>
 
             </div>
