@@ -28,21 +28,21 @@
     </marquee>
     <script src="{{ asset('js/player.js') }}" type="text/javascript"></script>
     <main style="padding-bottom:500px;">
-        <div id="channels" style="z-index:2;">
+        <div id="channels" style="z-index:100;">
 
             <h2 class="category">WORLD CUP 2022</h2>
             <div class="channel_collapse">
 
-                <div class="channel" onclick="play('https://1036164025.vnns.net/hda1/vtv2_vhls.smil/chunklist.m3u8')">
+                <div class="channel" onclick="play('https://drfamaga5qlivnt.vcdn.com.vn/vtv02/vtv02@1080p.m3u8')">
                     <img src='https://cdn.hqth.me/logo/thumbs/2.png'>
                 </div>
-                <div class="channel" onclick="play('https://1036164025.vnns.net/hda1/vtv3hd_vhls.smil/chunklist.m3u8')">
+                <div class="channel" onclick="play('https://drfamaga5qlivnt.vcdn.com.vn/vtv03/vtv03@1080p.m3u8')">
                     <img src='https://cdn.hqth.me/logo/thumbs/3.png'>
                 </div>
-                <div class="channel" onclick="play('https://1036164025.vnns.net/hda2/vtv5hd_vhls.smil/chunklist.m3u8')">
+                <div class="channel" onclick="play('https://drfamaga5qlivnt.vcdn.com.vn/vtv05/vtv05@1080p.m3u8')">
                     <img src='https://cdn.hqth.me/logo/thumbs/5.png'>
                 </div>
-                <div class="channel" onclick="play('https://1036164025.vnns.net/hda1/vtv6hd_vhls.smil/chunklist.m3u8')">
+                <div class="channel" onclick="play('https://drfamaga5qlivnt.vcdn.com.vn/vtv06/vtv06@1080p.m3u8')">
                     <img src='https://cdn.hqth.me/logo/thumbs/8.png'>
                 </div>
 
@@ -53,11 +53,11 @@
             <h2 class="category">SPORTS - THỂ THAO ĐỈNH CAO</h2>
             <div class="channel_collapse">
 
-                <div class="channel" onclick="play('https://1123139281.cdn.khmer-hd.com/may1HD/playlist.m3u8')"> <img
+                <div class="channel" onclick="play('http://api.vthanhtivi.pw/v1/getlink/vietteltvrtp/vtv2')"> <img
                         src='https://i.ibb.co/tcP4yqm/live1.png'> </div>
-                <div class="channel" onclick="play('https://saoke2.cdn.khmer-hd.com/sk1/playlist.m3u8')"> <img
+                <div class="channel" onclick="play('https://cakhiapro.fastlycdnlive.xyz/live/_definst_/stream_1_a86e6@luhd1/chunklist.m3u8')"> <img
                         src='https://i.ibb.co/nByPWcv/live2.png'> </div>
-                <div class="channel" onclick="play('https://iptvvn.xyz/vtv6.tv.laonongdan.m3u8')"> <img
+                <div class="channel" onclick="play('https://179665839.global.cdnfastest.com/live/luhd2/chunklist.m3u8')"> <img
                         src='https://i.ibb.co/Vvtk0Tt/live3.png'> </div>
                 <div class="channel" onclick="play('https://jq9sucdqmfliv.vcdn.cloud/123SD/index.m3u8')"> <img
                         src='https://i.ibb.co/8PgzVFM/live4.png'> </div>
