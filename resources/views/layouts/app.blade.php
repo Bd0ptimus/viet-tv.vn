@@ -56,7 +56,7 @@
     @php
         use App\Admin;
     @endphp
-    <img src="{{ asset('storage/web-info/logo/logo2.jpg') }}" style="position: fixed; top:0px; left:0px; width:100%; height:100%; z-index:0;">
+    <img src="{{ asset('storage/web-info/logo/logo2.jpg') }}" style="position: fixed; top:0px; left:0px; width:auto; object-fit:cover; height:100%; z-index:0;">
     <div id="app" style="background-color:rgba(0,0,0,0.1); height:64px;">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="position:fixed; width: 100%; z-index:1002; border:0px; padding:0px; background-color:rgba(0,0,0,0.1)">
             <div class="container d-flex justify-content-center" style="height : 100%; padding:0px;">
