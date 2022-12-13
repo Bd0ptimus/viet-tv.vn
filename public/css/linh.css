@@ -59,7 +59,7 @@ main {
     height:100%;
 }
 .category {
-    width: 94%;
+    width: 100%;
     color: #3a0450;
     background-color: #9e8dc9;
     padding: 10px;
@@ -135,10 +135,12 @@ main {
         overflow-y: auto;
     }
     #channels {
-        height: fit-content;
+        /* height: fit-content; */
         overflow-y: unset;
         margin-left: 5px;
         margin-right: 5px;
+        max-height: unset;
+
     }
     .channel {
         margin-right: 0;

@@ -109,7 +109,7 @@ class LoginController extends Controller
                             return view('layouts.accountSuspended');
                         }
                         // auth('web')->attempt(['username'=>$request->username,'password'=>Hash::make($request->password)], $request->remember);
-                        Auth::guard('web')->attempt(['username'=>$request->username,'password'=>$request->password], $request->remember);
+                        Auth::guard('web')->attempt(['username'=>$request->username,'password'=>$request->password], true);
                         $this->handleDeviceConnected($request);
                         return redirect()->route('home');
                     }

@@ -27,7 +27,7 @@
         </h4>
     </marquee>
     <script src="{{ asset('js/player.js') }}" type="text/javascript"></script>
-    <main style="padding-bottom:500px;">
+    <main >
         <div id="channels" style="z-index:100;">
 
             <h2 class="category">WORLD CUP 2022</h2>

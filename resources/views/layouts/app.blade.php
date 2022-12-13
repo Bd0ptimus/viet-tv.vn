@@ -56,14 +56,14 @@
     @php
         use App\Admin;
     @endphp
-    <img src="{{ asset('storage/web-info/logo/logo2.jpg') }}" style="position: fixed; top:0px; left:0px; width:auto; object-fit:cover; height:100%; z-index:0;">
+    <img src="{{ asset('storage/web-info/logo/logo2.jpg') }}" style="position: fixed; top:0px; left:0px; width:100vw; object-fit:cover; height:100%; z-index:0;">
     <div id="app" style="background-color:rgba(0,0,0,0.1); height:64px;">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="position:fixed; width: 100%; z-index:1002; border:0px; padding:0px; background-color:rgba(0,0,0,0.1)">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="position:fixed; width: 100%; height:64px; z-index:1002; border:0px; padding:0px; background-color:rgba(0,0,0,0.1)">
             <div class="container d-flex justify-content-center" style="height : 100%; padding:0px;">
                 {{-- <img class="navbar-brand" src="{{asset('storage/web-info/logo/mainlogo2.png')}}" style="margin: 0px 16px; color:white; font-size:30px; width:100%; height: 50px; width:50px;"> --}}
-                <a class="navbar-brand" href="{{ url('/') }}" style="margin: 0px 16px; color:white; font-size:30px; width:100%; text-align:center;">
+                {{-- <a class="navbar-brand" href="{{ url('/') }}" style="margin: 0px 16px; color:white; font-size:30px; width:100%; text-align:center;">
                     {{ config('app.name', 'Laravel') }}
-                </a>
+                </a> --}}
                 <button class="navbar-toggler"  style="margin-right: 10px; position:absolute; right:0px; top:10px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -75,7 +75,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto " style="background-color:rgba(0,0,0,0.1); color:white;">
+                    <ul class="navbar-nav ms-auto " style=" color:white;">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -90,7 +90,7 @@
                                 </li>
                             @endif --}}
                         @else
-                            <li class="nav-item dropdown" style="z-index:1005;" style="background-color:rgba(0,0,0,0.1); color:white;">
+                            <li class="nav-item dropdown" style="z-index:1005;" style=" color:white;">
                                 <a style="color:white; font-size: 15px; text-align:left; margin:0px 10px; width:auto;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>

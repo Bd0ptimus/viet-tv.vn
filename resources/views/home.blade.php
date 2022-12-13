@@ -20,13 +20,13 @@
             @if(Admin::user() == null)
                 <div class="row justify-content-center">
                     <div class="col-md-6 text-center mb-5">
-                        <h2 class="heading-section">Đăng Nhập</h2>
+                        <h2 class="heading-section main-text-color">Đăng Nhập</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-6 col-lg-4">
                         <div class="login-wrap p-0">
-                            <h3 class="mb-4 text-center" style="font-weight: 600;">Bạn đã có tài khoản?</h3>
+                            <h3 class="mb-4 text-center main-text-color" style="font-weight: 600;">Bạn đã có tài khoản?</h3>
                             <form action="{{ route('auth.login') }}" method="POST" class="signin-form"> @csrf
                                 <div class="form-group">
                                     <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" placeholder="Tên đăng nhập" required autocomplete="username" autofocus>
@@ -54,14 +54,14 @@
                                         Nhập</button>
                                 </div>
                                 <div class="form-group d-flex justify-content-between">
-                                    <div style="width:50%;margin:0px;">
+                                    {{-- <div style="width:50%;margin:0px;">
                                         <label class="checkbox-wrap checkbox-primary">Ghi nhớ đăng nhập
                                             <input type="checkbox"  name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                             <span class="checkmark"></span>
                                         </label>
-                                    </div>
-                                    <div class="text-md-right d-flex justify-content-end" style="width:50%;margin:0px;">
-                                        <a href="{{ route('auth.password.forget.index') }}" style="color: #fff">Quên mật khẩu</a>
+                                    </div> --}}
+                                    <div class="text-md-right d-flex justify-content-center" style="width:100%;margin:0px;">
+                                        <a href="{{ route('auth.password.forget.index') }}" style="color: #fbceb5">Quên mật khẩu</a>
                                     </div>
                                 </div>
                                 <div class="form-group d-flex justify-content-center">
