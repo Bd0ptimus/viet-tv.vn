@@ -70,11 +70,11 @@
                     <i class="fa-solid fa-bars fa-2xl menuList-icon" style="color:#adb5bd;"></i>
                 </div>
             </div>
-            <div class="app-scrollupBar justify-content-center app-scrollIndicator" id="scrollUpBar" onmouseover="scrollUpHover()" onmouseout="scrollUpHoverEnd()">
+            <div class="app-scrollupBar justify-content-center app-scrollIndicator" id="scrollUpBar">
                 <i class="fa-solid fa-chevron-up fa-2xl scrollindicator-icon"
                     style="color:rgba(0,0,0,0);margin-top:2%;"></i>
             </div>
-            <div class="app-scrolldownBar justify-content-center app-scrollIndicator" id="scrollDownBar"  onmouseover="scrollDownHover()" onmouseout="scrollDownHoverEnd()">
+            <div class="app-scrolldownBar justify-content-center app-scrollIndicator" id="scrollDownBar"  >
                 <i class="fa-solid fa-chevron-down fa-2xl scrollindicator-icon"
                     style="color:rgba(0,0,0,0);margin-top:2%;"></i>
             </div>
@@ -327,8 +327,8 @@
 
 <script>
     var diff = 1;
-        var clickDiff=40;
-        var currentPos = 0;
+    var clickDiff=40;
+    var currentPos = 0;
     function scrollUpHover(){
         intervalId = window.setInterval(function() {
                     console.log('in mouse over');
@@ -403,25 +403,25 @@
             //     console.log("Bottom of page");
             // }
         }
-        // $('#scrollUpBar').on('click', function(){
-        //     console.log('body.scrollHeight : ', document.body.scrollHeight);
-        //     if (window.pageYOffset != 0) {
-        //         currentPos = currentPos - clickDiff;
-        //         if (currentPos < 0) currentPos = 0;
-        //         console.log('currentPos : ', currentPos);
-        //         window.scrollTo(0, currentPos);
-        //     }
-        // });
+        $('#scrollUpBar').on('click', function(){
+            console.log('body.scrollHeight : ', document.body.scrollHeight);
+            if (window.pageYOffset != 0) {
+                currentPos = currentPos - clickDiff;
+                if (currentPos < 0) currentPos = 0;
+                console.log('currentPos : ', currentPos);
+                window.scrollTo(0, currentPos);
+            }
+        });
 
-        // $('#scrollDownBar').on('click', function(){
-        //     console.log('scrollDownPageClick ------ Click : ', currentPos);
+        $('#scrollDownBar').on('click', function(){
+            console.log('scrollDownPageClick ------ Click : ', currentPos);
 
-        //     if ((window.innerHeight + window.scrollY) < document.body.scrollHeight - 1) {
-        //         currentPos = currentPos + clickDiff;
-        //         console.log('currentPos ------ Click : ', currentPos);
-        //         window.scroll(0, currentPos);
-        //     }
-        // });
+            if ((window.innerHeight + window.scrollY) < document.body.scrollHeight - 1) {
+                currentPos = currentPos + clickDiff;
+                console.log('currentPos ------ Click : ', currentPos);
+                window.scroll(0, currentPos);
+            }
+        });
 
 
 
