@@ -359,6 +359,8 @@
                 currentPos = currentPos + diff;
                 console.log('currentPos Down : ', currentPos);
                 // $('#mainSec').css('top',currentPos);
+                alert('scroll down page: ');
+
                 window.scroll(0, currentPos);
             }
         }
@@ -370,6 +372,8 @@
                 if (currentPos < 0) currentPos = 0;
                 console.log('currentPosUp : ', currentPos);
                 // $('#mainSec').css('top',currentPos);
+                alert('scroll up page: ');
+
                 window.scrollTo(0, currentPos);
             }
         }
