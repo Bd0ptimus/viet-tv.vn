@@ -156,7 +156,7 @@
             <div class="container" style="height:auto; margin:0px;">
                 <div class="row vertical-container" style="width: 100vw; height:100vh;">
                     <div class="social row text-center d-flex justify-content-center vertical-element-middle-align"
-                        style="width:100%;">
+                        style="width:100%; margin:auto;">
                         <a class="login-action-nav d-block justify-content-center rounded m-2"
                             style="border:0px !important;" href='{{ route('tv.index') }}'>
                             <img class="login-action-img" src="{{ asset('storage/web-info/logo/tv-logo.png') }}">

@@ -50,7 +50,7 @@
                 <input type="text" id="searchBarMb" class="tv-searchBar-mb" placeholder="Tìm kiếm kênh">
             </div>
             <div style="width:100%;margin-top: 20px;" class="d-flex justify-content-center">
-                <select id="mbCategorySelection" class="tv-category-select" style="width:50%; " onchange="mbSelectCategoryEvent()">
+                <select id="mbCategorySelection" class="tv-category-select"  style="width:50%; text-align-last:center;" onchange="mbSelectCategoryEvent()">
                     <option value="0" class="category-item">Tất cả</option>
                     @foreach($categories as $category)
                         <option value="{{$category->id}}" class="category-item">{{$category->category_name}}</option>
