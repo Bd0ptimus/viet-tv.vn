@@ -361,7 +361,7 @@
                 // $('#mainSec').css('top',currentPos);
                 alert('scroll down page: ');
 
-                window.scroll(0, currentPos);
+                window.scrollTo(0, currentPos);
             }
         }
 
