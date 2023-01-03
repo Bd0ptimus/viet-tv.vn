@@ -369,7 +369,7 @@
                 currentPos = currentPos + clickDiff;
                 console.log('currentPos ------ Click : ', currentPos);
                 // $('#mainSec').css('top',currentPos);
-                window.scrollTo(0, currentPos);
+                window.scroll(0, currentPos);
             }
         });
 
@@ -381,7 +381,7 @@
                 currentPos = currentPos + diff;
                 console.log('currentPos : ', currentPos);
                 // $('#mainSec').css('top',currentPos);
-                window.scrollTo(0, currentPos);
+                window.scroll(0, currentPos);
             }
         }
 
