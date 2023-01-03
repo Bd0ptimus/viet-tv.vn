@@ -70,11 +70,11 @@
                     <i class="fa-solid fa-bars fa-2xl menuList-icon" style="color:#adb5bd;"></i>
                 </div>
             </div>
-            <div class="app-scrollupBar justify-content-center app-scrollIndicator" id="scrollUpBar">
+            <div class="app-scrollupBar justify-content-center app-scrollIndicator" id="scrollUpBar" onmouseover="scrollUpHover()" onmouseout="scrollUpHoverEnd()">
                 <i class="fa-solid fa-chevron-up fa-2xl scrollindicator-icon"
                     style="color:rgba(0,0,0,0);margin-top:2%;"></i>
             </div>
-            <div class="app-scrolldownBar justify-content-center app-scrollIndicator" id="scrollDownBar" >
+            <div class="app-scrolldownBar justify-content-center app-scrollIndicator" id="scrollDownBar"  onmouseover="scrollDownHover()" onmouseout="scrollDownHoverEnd()">
                 <i class="fa-solid fa-chevron-down fa-2xl scrollindicator-icon"
                     style="color:rgba(0,0,0,0);margin-top:2%;"></i>
             </div>
@@ -326,6 +326,53 @@
 </style>
 
 <script>
+    var diff = 1;
+        var clickDiff=40;
+        var currentPos = 0;
+    function scrollUpHover(){
+        intervalId = window.setInterval(function() {
+                    console.log('in mouse over');
+                    scrollUpPage();
+
+        }, 10);
+    }
+
+    function scrollUpHoverEnd(){
+        window.clearInterval(intervalId);
+    }
+
+    function scrollDownHover(){
+        intervalId = window.setInterval(function() {
+                    console.log('in mouse over');
+                    scrollDownPage();
+
+        }, 10);
+    }
+
+    function scrollDownHoverEnd(){
+        window.clearInterval(intervalId);
+    }
+
+    function scrollDownPage() {
+            console.log('body.scrollHeight down: ', document.body.scrollHeight);
+            if ((window.innerHeight + window.scrollY) < document.body.scrollHeight - 1) {
+                currentPos = currentPos + diff;
+                console.log('currentPos Down : ', currentPos);
+                // $('#mainSec').css('top',currentPos);
+                window.scroll(0, currentPos);
+            }
+        }
+
+        function scrollUpPage() {
+            console.log('body.scrollHeight up: ', document.body.scrollHeight);
+            if (window.pageYOffset != 0) {
+                currentPos = currentPos - diff;
+                if (currentPos < 0) currentPos = 0;
+                console.log('currentPosUp : ', currentPos);
+                // $('#mainSec').css('top',currentPos);
+                window.scrollTo(0, currentPos);
+            }
+        }
     $(document).ready(function() {
         $('#menuBtn').on('click', function() {
             console.log('menu btn click');
@@ -340,9 +387,9 @@
             $('#sideBar').removeClass('slide-out');
         });
 
-        var diff = 1;
-        var clickDiff=40;
-        var currentPos = 0;
+        // var diff = 1;
+        // var clickDiff=40;
+        // var currentPos = 0;
 
         window.onscroll = function(ev) {
             console.log('sroll offset: ', window.pageYOffset);
@@ -373,53 +420,36 @@
 
 
 
-        function scrollDownPage() {
-            console.log('body.scrollHeight down: ', document.body.scrollHeight);
-            if ((window.innerHeight + window.scrollY) < document.body.scrollHeight - 1) {
-                currentPos = currentPos + diff;
-                console.log('currentPos Down : ', currentPos);
-                // $('#mainSec').css('top',currentPos);
-                window.scroll(0, currentPos);
-            }
-        }
 
-        function scrollUpPage() {
-            console.log('body.scrollHeight up: ', document.body.scrollHeight);
-            if (window.pageYOffset != 0) {
-                currentPos = currentPos - diff;
-                if (currentPos < 0) currentPos = 0;
-                console.log('currentPosUp : ', currentPos);
-                // $('#mainSec').css('top',currentPos);
-                window.scrollTo(0, currentPos);
-            }
-        }
 
-        $('#scrollDownBar').hover(
-            function() {
-                intervalId = window.setInterval(function() {
-                    console.log('scroll down');
-                    scrollDownPage();
-                }, 10);
 
-            },
-            function() {
-                // the element is no longer hovered... do stuff
-                window.clearInterval(intervalId);
-            }
-        );
-        $('#scrollUpBar').hover(
-            function() {
-                intervalId = window.setInterval(function() {
-                    console.log('scroll up');
-                    scrollUpPage();
-                }, 10);
 
-            },
-            function() {
-                // the element is no longer hovered... do stuff
-                window.clearInterval(intervalId);
-            }
-        );
+        // $('#scrollDownBar').hover(
+        //     function() {
+        //         intervalId = window.setInterval(function() {
+        //             console.log('scroll down');
+        //             scrollDownPage();
+        //         }, 10);
+
+        //     },
+        //     function() {
+        //         // the element is no longer hovered... do stuff
+        //         window.clearInterval(intervalId);
+        //     }
+        // );
+        // $('#scrollUpBar').hover(
+        //     function() {
+        //         intervalId = window.setInterval(function() {
+        //             console.log('scroll up');
+        //             scrollUpPage();
+        //         }, 10);
+
+        //     },
+        //     function() {
+        //         // the element is no longer hovered... do stuff
+        //         window.clearInterval(intervalId);
+        //     }
+        // );
 
     });
 </script>
