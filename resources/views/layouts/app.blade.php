@@ -361,7 +361,7 @@
                 // $('#mainSec').css('top',currentPos);
                 // alert('scroll down page: ');
 
-                window.scrollTo(0, currentPos);
+                window.scroll(0, currentPos);
             }
         }
 
@@ -374,7 +374,7 @@
                 // $('#mainSec').css('top',currentPos);
                 // alert('scroll up page: ');
 
-                window.scrollTo(0, currentPos);
+                window.scroll(0, currentPos);
             }
         }
     $(document).ready(function() {
