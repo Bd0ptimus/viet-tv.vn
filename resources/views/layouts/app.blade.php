@@ -359,7 +359,7 @@
                 currentPos = currentPos + diff;
                 console.log('currentPos Down : ', currentPos);
                 // $('#mainSec').css('top',currentPos);
-                alert('scroll down page: ');
+                // alert('scroll down page: ');
 
                 window.scrollTo(0, currentPos);
             }
@@ -372,7 +372,7 @@
                 if (currentPos < 0) currentPos = 0;
                 console.log('currentPosUp : ', currentPos);
                 // $('#mainSec').css('top',currentPos);
-                alert('scroll up page: ');
+                // alert('scroll up page: ');
 
                 window.scrollTo(0, currentPos);
             }
@@ -398,7 +398,7 @@
         window.onscroll = function(ev) {
             console.log('sroll offset: ', window.pageYOffset);
             currentPos = window.pageYOffset;
-            alert('scroll offset: ', currentPos);
+            // alert('scroll offset: ', currentPos);
             // if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight-50) {
             //     console.log("Bottom of page");
             // }
