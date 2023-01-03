@@ -338,7 +338,7 @@
     }
 
     function scrollUpHoverEnd(){
-        window.clearInterval(intervalId);
+        // window.clearInterval(intervalId);
     }
 
     function scrollDownHover(){
@@ -350,7 +350,7 @@
     }
 
     function scrollDownHoverEnd(){
-        window.clearInterval(intervalId);
+        // window.clearInterval(intervalId);
     }
 
     function scrollDownPage() {
