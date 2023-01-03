@@ -351,46 +351,44 @@
             //     console.log("Bottom of page");
             // }
         }
-        $('#scrollUpBar').on('click', function(){
-            console.log('body.scrollHeight : ', document.body.scrollHeight);
-            if (window.pageYOffset != 0) {
-                currentPos = currentPos - clickDiff;
-                if (currentPos < 0) currentPos = 0;
-                console.log('currentPos : ', currentPos);
-                // $('#mainSec').css('top',currentPos);
-                window.scrollTo(0, currentPos);
-            }
-        });
+        // $('#scrollUpBar').on('click', function(){
+        //     console.log('body.scrollHeight : ', document.body.scrollHeight);
+        //     if (window.pageYOffset != 0) {
+        //         currentPos = currentPos - clickDiff;
+        //         if (currentPos < 0) currentPos = 0;
+        //         console.log('currentPos : ', currentPos);
+        //         window.scrollTo(0, currentPos);
+        //     }
+        // });
 
-        $('#scrollDownBar').on('click', function(){
-            console.log('scrollDownPageClick ------ Click : ', currentPos);
+        // $('#scrollDownBar').on('click', function(){
+        //     console.log('scrollDownPageClick ------ Click : ', currentPos);
 
-            if ((window.innerHeight + window.scrollY) < document.body.scrollHeight - 1) {
-                currentPos = currentPos + clickDiff;
-                console.log('currentPos ------ Click : ', currentPos);
-                // $('#mainSec').css('top',currentPos);
-                window.scroll(0, currentPos);
-            }
-        });
+        //     if ((window.innerHeight + window.scrollY) < document.body.scrollHeight - 1) {
+        //         currentPos = currentPos + clickDiff;
+        //         console.log('currentPos ------ Click : ', currentPos);
+        //         window.scroll(0, currentPos);
+        //     }
+        // });
 
 
 
         function scrollDownPage() {
-            console.log('body.scrollHeight : ', document.body.scrollHeight);
+            console.log('body.scrollHeight down: ', document.body.scrollHeight);
             if ((window.innerHeight + window.scrollY) < document.body.scrollHeight - 1) {
                 currentPos = currentPos + diff;
-                console.log('currentPos : ', currentPos);
+                console.log('currentPos Down : ', currentPos);
                 // $('#mainSec').css('top',currentPos);
                 window.scroll(0, currentPos);
             }
         }
 
         function scrollUpPage() {
-            console.log('body.scrollHeight : ', document.body.scrollHeight);
+            console.log('body.scrollHeight up: ', document.body.scrollHeight);
             if (window.pageYOffset != 0) {
                 currentPos = currentPos - diff;
                 if (currentPos < 0) currentPos = 0;
-                console.log('currentPos : ', currentPos);
+                console.log('currentPosUp : ', currentPos);
                 // $('#mainSec').css('top',currentPos);
                 window.scrollTo(0, currentPos);
             }
