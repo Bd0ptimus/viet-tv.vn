@@ -3,7 +3,7 @@
 @include('layouts.app')
 
 <body>
-    <div class="container" style="margin-top:50px;">
+    <div class="container" style="padding-top:50px;">
         <div class="row justify-content-center">
             <div class="row vertical-container" style="height:90vh;">
                 <div class="row d-flex justify-content-center vertical-element-middle-align" style="width:100%;">

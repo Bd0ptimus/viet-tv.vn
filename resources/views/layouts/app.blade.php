@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -9,7 +10,7 @@
 
     <!-- HTML Meta Tags -->
     <title>IPTV Online by Viet-TV</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/web-info/logo/logo.jpg')}}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/web-info/logo/logo.jpg') }}" />
     <meta name="description"
         content="Xem truyền hình Online by Viet-TV | Truyền hình dành riêng cho người Việt tại nước ngoài | Chi tiết liên hệ Zalo: +84983775500">
     <!-- Google / Search Engine Tags -->
@@ -52,96 +53,377 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
 
 </head>
+
 <body>
     @php
         use App\Admin;
     @endphp
-    <img src="{{ asset('storage/web-info/logo/logo2.jpg') }}" style="position: fixed; top:0px; left:0px; width:100vw; object-fit:cover; height:100%; z-index:0;">
-    <div id="app" style="background-color:rgba(0,0,0,0.1); height:64px;">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="position:fixed; width: 100%; height:64px; z-index:1002; border:0px; padding:0px; background-color:rgba(0,0,0,0.1)">
-            <div class="container d-flex justify-content-center" style="height : 100%; padding:0px;">
-                {{-- <img class="navbar-brand" src="{{asset('storage/web-info/logo/mainlogo2.png')}}" style="margin: 0px 16px; color:white; font-size:30px; width:100%; height: 50px; width:50px;"> --}}
-                {{-- <a class="navbar-brand" href="{{ url('/') }}" style="margin: 0px 16px; color:white; font-size:30px; width:100%; text-align:center;">
-                    {{ config('app.name', 'Laravel') }}
-                </a> --}}
-                <button class="navbar-toggler"  style="margin-right: 10px; position:absolute; right:0px; top:10px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <img src="{{ asset('storage/web-info/logo/logo2.jpg') }}" id="imgBackground"
+        style="position: fixed; top:0px; left:0px; width:100vw; object-fit:cover; height:100%; z-index:0;">
+    <div id="app" style=" height:8%;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm"
+            style="position:fixed; width: 100vw; height:8%; z-index:1002; border:0px; padding:0px; box-shadow:none !important; max-width: none !important;">
+            <div class="container d-flex justify-content-start"
+                style="height : 100%; width:100vw; padding:0px; margin:0px; max-width: none !important;">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto " style=" color:white;">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a  style="color:white; font-size: 15px; text-align:left;  margin:0px 10px; width:auto;" class="nav-link" href="{{ route('home') }}">Đăng Nhập</a>
-                                </li>
-                            @endif
-
-                            {{-- @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif --}}
-                        @else
-                            <li class="nav-item dropdown" style="z-index:1005;" style=" color:white;">
-                                <a style="color:white; font-size: 15px; text-align:left; margin:0px 10px; width:auto;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" style="background-color:rgba(0,0,0,0.1); color:white; border-radius:0px !important; ">
-                                    <a class="dropdown-item" style="cursor: pointer; color:white !important;"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('home-form').submit();">
-                                        <i class="fa-solid fa-house"></i>    <span>Trang Chủ</span>
-                                    </a>
-                                    @if(Admin::user()->inRoles([ROLE_ADMIN, ROLE_SUPER_ADMIN]))
-                                        <a class="dropdown-item" style="cursor: pointer;color:white !important;"
-                                            onclick="event.preventDefault();
-                                                        document.getElementById('accountManager-form').submit();">
-                                            <i class="fa-solid fa-users"></i>    <span>Quản Lý Tài Khoản</span>
-                                        </a>
-                                    @endif
-                                    <a class="dropdown-item" style="cursor: pointer;color:white !important;"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('changePassword-form').submit();">
-                                        <i class="fa-solid fa-lock"></i>    <span>Đổi Mật Khẩu</span>
-                                    </a>
-
-                                    <a class="dropdown-item" href="{{ route('auth.logout') }}" style="color:white !important;"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        <i class="fa-solid fa-right-from-bracket"></i>   <span>Đăng Xuất</span>
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('auth.logout') }}" method="GET" class="d-none">
-                                        @csrf
-                                    </form>
-                                    <form id="changePassword-form" action="{{ route('auth.password.change') }}" method="GET" class="d-none">
-                                        @csrf
-                                    </form>
-
-                                    <form id="accountManager-form" action="{{ route('admin.accountManager') }}" method="GET" class="d-none">
-                                        @csrf
-                                    </form>
-
-                                    <form id="home-form" action="{{ route('home') }}" method="GET" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+                <div class="menu-selection d-flex justify-content-center" id="menuBtn" >
+                    <i class="fa-solid fa-bars fa-2xl menuList-icon" style="color:#adb5bd;"></i>
                 </div>
+            </div>
+            <div class="app-scrollupBar justify-content-center app-scrollIndicator" id="scrollUpBar">
+                <i class="fa-solid fa-chevron-up fa-2xl scrollindicator-icon"
+                    style="color:rgba(0,0,0,0);margin-top:2%;"></i>
+            </div>
+            <div class="app-scrolldownBar justify-content-center app-scrollIndicator" id="scrollDownBar" >
+                <i class="fa-solid fa-chevron-down fa-2xl scrollindicator-icon"
+                    style="color:rgba(0,0,0,0);margin-top:2%;"></i>
             </div>
         </nav>
 
     </div>
+
+    <div class="app-sidebar justify-content-center" id="sideBar">
+        <div class="app-sidebar-header d-flex justify-content-end">
+            <div class="sidebar-close-btn d-flex justify-content-center" id="closeSidebarBtn">
+                <i class="fa-solid fa-xmark fa-xl" style="margin-top:15px; color:black"></i>
+            </div>
+        </div>
+        <div class="app-sidebar-menu  d-block justify-content-center">
+            <div class="app-sidebar-item"
+                onclick="event.preventDefault();
+            document.getElementById('home-form').submit();">
+                <i class="fa-solid fa-house"></i><span style="font-size:18px;">&emsp;Trang chủ</span>
+            </div>
+            @if (Admin::user() == null)
+                <div class="app-sidebar-item"
+                    onclick="event.preventDefault();
+            document.getElementById('home-form').submit();">
+                    <i class="fa-solid fa-lock"></i><span style="font-size:18px;">&emsp;Đăng nhập</span>
+                </div>
+            @endif
+            @if (Admin::user() !== null && Admin::user()->inRoles([ROLE_ADMIN, ROLE_SUPER_ADMIN]))
+                <div class="app-sidebar-item"
+                    onclick="event.preventDefault();
+            document.getElementById('accountManager-form').submit();">
+                    <i class="fa-solid fa-users"></i><span style="font-size:18px;">&emsp;Quản lý tài khoản</span>
+                </div>
+
+                <div class="app-sidebar-item"
+                    onclick="event.preventDefault();
+            document.getElementById('channelManager-form').submit();">
+                    <i class="fa-solid fa-tv"></i></i><span style="font-size:18px;">&emsp;Quản lý kênh</span>
+                </div>
+            @endif
+            @if (Admin::user() !== null)
+                <div class="app-sidebar-item"
+                    onclick="event.preventDefault();
+            document.getElementById('changePassword-form').submit();">
+                    <i class="fa-solid fa-lock"></i><span style="font-size:18px;">&emsp;Đổi mật khẩu</span>
+                </div>
+                <div class="app-sidebar-item"
+                    onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+                    <i class="fa-solid fa-right-from-bracket"></i><span style="font-size:18px;">&emsp;Đăng xuất</span>
+                </div>
+            @endif
+            <form id="logout-form" action="{{ route('auth.logout') }}" method="GET" class="d-none">
+                @csrf
+            </form>
+            <form id="changePassword-form" action="{{ route('auth.password.change') }}" method="GET"
+                class="d-none">
+                @csrf
+            </form>
+
+            <form id="accountManager-form" action="{{ route('admin.accountManager') }}" method="GET"
+                class="d-none">
+                @csrf
+            </form>
+
+            <form id="channelManager-form" action="{{route('tv.admin.index')}}" method="GET"
+                class="d-none">
+                @csrf
+            </form>
+
+            <form id="home-form" action="{{ route('home') }}" method="GET" class="d-none">
+                @csrf
+            </form>
+        </div>
+    </div>
+
+
+
 </body>
+<style>
+    .app-sidebar {
+        display: none;
+        z-index: 5000;
+        position: fixed;
+        top: 0px;
+        height: 100vh;
+        width: auto;
+        max-width: 100vw;
+        left: 0px;
+        background-color: white;
+    }
+
+    .app-sidebar-header {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .sidebar-close-btn {
+        background-color: #F0F2F5;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    .sidebar-close-btn:hover {
+        background-color: #adb5bd;
+    }
+
+
+    .app-sidebar-item {
+        cursor: pointer;
+        width: auto;
+        padding: 5px;
+        margin: 0px 10px;
+        border-radius: 10px;
+        color: #6c757d;
+    }
+
+    .app-sidebar-item:hover {
+        background-color: #F0F2F5;
+    }
+
+    .menu-selection {
+        top: 0px;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        z-index: 4000;
+    }
+
+    .menuList-icon {
+        color: white;
+        margin-top: 20px;
+    }
+
+
+    .app-scrolldownBar {
+        z-index: 2000;
+        cursor: pointer;
+        height: 8%;
+        width: 100vw;
+        position: fixed;
+        bottom: 0px;
+        background-color: rgba(0, 0, 0, 0);
+
+    }
+
+    .app-scrollupBar {
+        z-index: 2000;
+        cursor: pointer;
+        height: 8%;
+        width: 100vw;
+        position: fixed;
+        top: 0px;
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    .app-scrolldownBar:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .app-scrollupBar:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .app-scrolldownBar:hover .scrollindicator-icon {
+        color: #adb5bd !important;
+    }
+
+    .app-scrollupBar:hover .scrollindicator-icon {
+        color: #adb5bd !important;
+    }
+
+    .slide-in {
+        animation: slide-in 0.5s forwards;
+        -webkit-animation: slide-in 0.5s forwards;
+    }
+
+    @keyframes slide-in {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    @-webkit-keyframes slide-in {
+        0% {
+            transform: translateX(0%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .slide-out {
+        animation: slide-out 0.5s forwards;
+        -webkit-animation: slide-out 0.5s forwards;
+    }
+
+    @keyframes slide-out {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(0%);
+        }
+    }
+
+    @-webkit-keyframes slide-out {
+        0% {
+            -webkit-transform: translateX(-100%);
+        }
+
+        100% {
+            -webkit-transform: translateX(0%);
+        }
+    }
+
+    @media screen and (min-width : 1020px) and (max-width: 5000px) {
+        .app-scrollIndicator{
+            display:flex;
+        }
+    }
+
+
+    @media screen and (min-width : 820px) and (max-width: 1020px) {
+        .app-scrollIndicator{
+            display:flex;
+        }
+    }
+
+
+    @media screen and (min-width : 450px) and (max-width: 820px) {
+        .app-scrollIndicator{
+            display:none;
+        }
+    }
+
+
+    @media screen and (max-width: 450px) {
+        .app-scrollIndicator{
+            display:none;
+        }
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+        $('#menuBtn').on('click', function() {
+            console.log('menu btn click');
+            $('#sideBar').css('display', 'block');
+            $('#sideBar').addClass('slide-out');
+            $('#sideBar').removeClass('slide-in');
+        });
+
+        $('#closeSidebarBtn').on('click', function() {
+            $('#sideBar').css('display', 'none');
+            $('#sideBar').addClass('slide-in');
+            $('#sideBar').removeClass('slide-out');
+        });
+
+        var diff = 1;
+        var clickDiff=40;
+        var currentPos = 0;
+
+        window.onscroll = function(ev) {
+            console.log('sroll offset: ', window.pageYOffset);
+            currentPos = window.pageYOffset;
+            // if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight-50) {
+            //     console.log("Bottom of page");
+            // }
+        }
+        $('#scrollUpBar').on('click', function(){
+            console.log('body.scrollHeight : ', document.body.scrollHeight);
+            if (window.pageYOffset != 0) {
+                currentPos = currentPos - clickDiff;
+                if (currentPos < 0) currentPos = 0;
+                console.log('currentPos : ', currentPos);
+                // $('#mainSec').css('top',currentPos);
+                window.scrollTo(0, currentPos);
+            }
+        });
+
+        $('#scrollDownBar').on('click', function(){
+            console.log('scrollDownPageClick ------ Click : ', currentPos);
+
+            if ((window.innerHeight + window.scrollY) < document.body.scrollHeight - 1) {
+                currentPos = currentPos + clickDiff;
+                console.log('currentPos ------ Click : ', currentPos);
+                // $('#mainSec').css('top',currentPos);
+                window.scrollTo(0, currentPos);
+            }
+        });
+
+
+
+        function scrollDownPage() {
+            console.log('body.scrollHeight : ', document.body.scrollHeight);
+            if ((window.innerHeight + window.scrollY) < document.body.scrollHeight - 1) {
+                currentPos = currentPos + diff;
+                console.log('currentPos : ', currentPos);
+                // $('#mainSec').css('top',currentPos);
+                window.scrollTo(0, currentPos);
+            }
+        }
+
+        function scrollUpPage() {
+            console.log('body.scrollHeight : ', document.body.scrollHeight);
+            if (window.pageYOffset != 0) {
+                currentPos = currentPos - diff;
+                if (currentPos < 0) currentPos = 0;
+                console.log('currentPos : ', currentPos);
+                // $('#mainSec').css('top',currentPos);
+                window.scrollTo(0, currentPos);
+            }
+        }
+
+        $('#scrollDownBar').hover(
+            function() {
+                intervalId = window.setInterval(function() {
+                    console.log('scroll down');
+                    scrollDownPage();
+                }, 10);
+
+            },
+            function() {
+                // the element is no longer hovered... do stuff
+                window.clearInterval(intervalId);
+            }
+        );
+        $('#scrollUpBar').hover(
+            function() {
+                intervalId = window.setInterval(function() {
+                    console.log('scroll up');
+                    scrollUpPage();
+                }, 10);
+
+            },
+            function() {
+                // the element is no longer hovered... do stuff
+                window.clearInterval(intervalId);
+            }
+        );
+
+    });
+</script>
+
 </html>

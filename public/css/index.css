@@ -350,6 +350,26 @@
 }
 
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.icon-align{
+    padding-top:14px;
+}
+
+.modal-close-btn{
+    width: 30px;
+    height:30px;
+    background-color:#F0F2F5 ;
+    border-radius: 50%;
+    cursor:pointer;
+}
+
+.modal-close-btn:hover{
+    background-color:#BCC0C4;
+
+}
 
 
 

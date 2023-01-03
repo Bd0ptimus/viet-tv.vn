@@ -17,7 +17,7 @@
 </style>
 
 <body>
-    <div class="row d-flex justify-content-center" style="width:auto; margin:auto; padding:auto; z-index:500;">
+    <div class="row d-flex justify-content-center" style=" width:auto; margin:auto; padding:auto; z-index:0;">
         <div class="row d-block justify-content-center" style="width:auto; margin:auto; padding:auto;">
             <div class="row d-flex justify-content-center" style="margin : 30px auto; padding:0px;">
                 <h3 class="d-flex justify-content-center" style="padding:0px;">
@@ -273,6 +273,8 @@
     $(document).ready(function() {
         $('#adminTable').DataTable();
         $('#userTable').DataTable();
+
+        $('#imgBackground').remove();
 
         var sendChangePasswordComplete = "{{ $sendChangePasswordComplete ?? -1 }}";
         console.log('check toast : ', sendChangePasswordComplete);

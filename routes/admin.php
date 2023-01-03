@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TvController;
 
 
 
@@ -18,4 +19,5 @@ Route::group(['prefix' => 'admin', 'as'=>'admin.'], function($route){
     $route->get('/active-account/{userId}', [ AdminController::class, 'activeAccount'])->name('activeAccount');
     $route->post('/change-password', [ AdminController::class, 'changePassword'])->name('changePassword');
     $route->get('change-status/{type}/{userId}', [ AdminController::class, 'changeStatus'])->name('changeStatus');
+
 });

@@ -7,7 +7,7 @@
 @endphp
 
 <body>
-    <div class="container" style="margin-top:50px;">
+    <div class="container" style="padding-top:50px;">
         <div class="d-flex justify-content-center">
             <div class="col-md-8">
                 <div class="card">
