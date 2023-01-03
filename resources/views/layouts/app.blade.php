@@ -338,7 +338,7 @@
     }
 
     function scrollUpHoverEnd(){
-        // window.clearInterval(intervalId);
+        window.clearInterval(intervalId);
     }
 
     function scrollDownHover(){
@@ -350,7 +350,7 @@
     }
 
     function scrollDownHoverEnd(){
-        // window.clearInterval(intervalId);
+        window.clearInterval(intervalId);
     }
 
     function scrollDownPage() {
@@ -394,6 +394,7 @@
         window.onscroll = function(ev) {
             console.log('sroll offset: ', window.pageYOffset);
             currentPos = window.pageYOffset;
+            alert('scroll offset: ', currentPos);
             // if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight-50) {
             //     console.log("Bottom of page");
             // }
