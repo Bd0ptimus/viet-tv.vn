@@ -178,12 +178,15 @@
                                                 <img class="tv-channel-img" style="height:6vw !important;" src="{{$channel->channel_img}}" onclick="play('{{$channel->channel_url}}')" >
                                                 <div class="tv-channel-name d-flex justify-content-between" style="color:black !important;">
 
-                                                    <span>
+                                                    <span style="width:80%;">
                                                         {{$channel->channel_name}}
                                                     </span>
-                                                    <span>
-                                                        <div style="width:10%;" onclick="removeChannel({{$channel->id}})">
-                                                            <i class=" d-flex justify-content-center fa-solid fa-trash"></i>
+                                                    <span style="width:20%;" class = "d-flex justify-content-center">
+                                                        <div  onclick="removeChannel({{$channel->id}})">
+                                                            <i style="margin:5px 5px 0px;" class=" d-flex justify-content-center fa-solid fa-trash"></i>
+                                                        </div>
+                                                        <div onclick="changeChannel({{$channel->id}}, '{{$channel->channel_name}}', '{{$channel->channel_img}}','{{$channel->channel_url}}', '{{$channel->tvCategory->id}}')">
+                                                            <i style="margin:5px 5px 0px;" class=" d-flex justify-content-center fa-solid fa-pencil"></i>
                                                         </div>
                                                     </span>
                                                 </div>
@@ -245,6 +248,7 @@
     @include('layouts.toast')
     @include('admin.tv.addChannelModal')
     @include('admin.tv.changeCategoryModal')
+    @include('admin.tv.changeChannelModal')
 
 
 
@@ -359,6 +363,18 @@
                     }
 
                 });
+    }
+
+    function changeChannel(channelId, channelName, channelImg, channelUrl, categoryId){
+        changeChannelResetFormStyle();
+        changeChannelResetForms();
+        $('#changeTvChannelName').val(`${channelName}`);
+        $('#changeTvChannelImage').val(`${channelImg}`);
+        $('#changeTvChannelUrl').val(`${channelUrl}`);
+        $('#changeTvChannelId').val(channelId);
+        $("#changeTvChannelCategory").val(`${categoryId}`).change();
+
+        $('#changeChannel-modal').modal('show');
     }
 
     function appendCategoryView(categoryId){

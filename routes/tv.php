@@ -23,6 +23,7 @@ Route::group(['prefix' => 'tv', 'as'=>'tv.'], function($route){
         $route->post('/add-channel', [TvController::class, 'addChannel'])->name('addChannel');
         $route->post('/remove-channel', [TvController::class, 'removeChannel'])->name('removeChannel');
         $route->post('/update-category',[TvController::class, 'updateCategory'])->name('updateCategory');
+        $route->post('/update-channel',[TvController::class, 'updateChannel'])->name('updateChannel');
 
     });
 });

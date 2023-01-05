@@ -40,6 +40,16 @@ class TvService
         ]);
     }
 
+    public function changeChannel($request){
+        // Log::debug('channel id : ',$request->channelId );
+        TvChannel::find($request->channelId)->update([
+            'channel_name'=>$request->channelName,
+            'channel_img'=>$request->channelImg,
+            'channel_url'=>$request->channelUrl,
+        ]);
+        return TvChannel::where('id',$request->channelId)->first();
+    }
+
     public function removeTvChannel($channelId){
         TvChannel::find($channelId)->delete();
     }

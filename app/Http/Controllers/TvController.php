@@ -87,16 +87,22 @@ class TvController extends Controller
             // $response['url'] = $channel->channel_url;
             $response['categoryId'] = $channel->category_id;
             $onclick = "play('{$channel->channel_url}')";
+            $onclickChangeChannel = "changeChannel(".$channel->id.",'{$channel->channel_name}', '{$channel->channel_img}','{$channel->channel_url}', '{$channel->tvCategory->id}')";
+
             $response['newChannel'] = '<div class="tv-channel"  id="channel-'.$channel->id.'">
                                             <img class="tv-channel-img" style="height:6vw !important;" src="'.$channel->channel_img.'" onclick="'.$onclick.'">
                                             <div class="tv-channel-name d-flex justify-content-between" style="color:black !important;">
 
-                                                <span>
+                                                <span style="width:80%;">
                                                 '.$channel->channel_name.'
                                                 </span>
-                                                <span>
-                                                    <div style="width:10%;" onclick="removeChannel('.$channel->id.')">
-                                                        <i class=" d-flex justify-content-center fa-solid fa-trash"></i>
+                                                <span style="width:20%;" class = "d-flex justify-content-center">
+                                                    <div onclick="removeChannel('.$channel->id.')">
+                                                        <i  style="margin:5px 5px 0px;" class=" d-flex justify-content-center fa-solid fa-trash"></i>
+                                                    </div>
+
+                                                    <div onclick="'.$onclickChangeChannel.'">
+                                                        <i style="margin:5px 5px 0px;"  class=" d-flex justify-content-center fa-solid fa-pencil"></i>
                                                     </div>
                                                 </span>
                                             </div>
@@ -106,6 +112,42 @@ class TvController extends Controller
             return response()->json(['error' => 1, 'msg' => 'Đã có lỗi']);
         }
         return response()->json(['error' => 0, 'msg' => 'add channel thanh cong','data'=>$response]);
+    }
+
+    public function updateChannel(Request $request){
+        try{
+            $channel = $this->tvService->changeChannel($request);
+            $response['id'] = $channel->id;
+            // $response['name'] = $channel->channel_name;
+            // $response['img'] = $channel->channel_img;
+            // $response['url'] = $channel->channel_url;
+            $response['categoryId'] = $channel->category_id;
+            $onclick = "play('{$channel->channel_url}')";
+            $onclickChangeChannel = "changeChannel(".$channel->id.",'{$channel->channel_name}', '{$channel->channel_img}','{$channel->channel_url}', '{$channel->tvCategory->id}')";
+
+            $response['newChannel'] = '
+                                            <img class="tv-channel-img" style="height:6vw !important;" src="'.$channel->channel_img.'" onclick="'.$onclick.'">
+                                            <div class="tv-channel-name d-flex justify-content-between" style="color:black !important;">
+
+                                                <span style="width:80%;">
+                                                '.$channel->channel_name.'
+                                                </span>
+                                                <span style="width:20%;" class = "d-flex justify-content-center">
+                                                    <div onclick="removeChannel('.$channel->id.')">
+                                                        <i  style="margin:5px 5px 0px;" class=" d-flex justify-content-center fa-solid fa-trash"></i>
+                                                    </div>
+
+                                                    <div onclick="'.$onclickChangeChannel.'">
+                                                        <i style="margin:5px 5px 0px;"  class=" d-flex justify-content-center fa-solid fa-pencil"></i>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                       ';
+        }catch(\Exception $e){
+            LOG::debug('error in updateChannel : ' . $e );
+            return response()->json(['error' => 1, 'msg' => 'Đã có lỗi']);
+        }
+        return response()->json(['error' => 0, 'msg' => 'change channel thanh cong','data'=>$response]);
     }
 
     public function removeChannel(Request $request){
