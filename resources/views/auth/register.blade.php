@@ -378,8 +378,8 @@
 
                                 <div class="col-md-6">
                                     <input type="phone" id="phone"
-                                        class="data-field form-control @error('phone') is-invalid @enderror" name="phone"
-                                        value="{{ old('phone') }}" required autocomplete="phone">
+                                        class="data-field form-control @error('phone') red-alert is-invalid @enderror is-invalid " name="phone"
+                                        value="" required>
                                 </div>
                             </div>
 
@@ -398,6 +398,11 @@
         </div>
     </div>
 </body>
+<style>
+    .red-alert{
+        border:solid 1px red;
+    }
+</style>
 <script>
     const phoneInputField = document.querySelector("#phone");
     const phoneInput = window.intlTelInput(phoneInputField, {
@@ -411,6 +416,10 @@
         $('#phone').on('change', function() {
             $('#createSubmit').val(phoneInput.getNumber());
         });
+
+        // var phoneExisted  = "{{old('phone')}}";
+        // console.log('phone existed : ', phoneExisted);
+        // $('#createSubmit').val(phoneExisted);
     })
 </script>
 

@@ -66,8 +66,8 @@ class AdminController extends Controller
                     return redirect()->back()->withErrors($validator->errors()->add('country', 'Phải chọn quốc gia'))->withInput($request->all());
                 }
                 if(!str_contains($request->phoneNumber, '+')){
-                    $validator->errors()->add('phone', 'Định dạng số điện thoại không đúng');
-                    return redirect()->back()->withErrors($validator)->withInput($request->all());
+                    // dd('abc');
+                    return redirect()->back()->withErrors($validator->errors()->add('phone', 'Định dạng số điện thoại không đúng'))->withInput($request->all());
                 }
                 $newAccount=$this->accountService->createAccount($request, $accountType);
                 return view('layouts.accountCreateConfirm',[
